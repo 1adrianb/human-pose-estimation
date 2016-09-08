@@ -57,7 +57,7 @@ The demo doesn't require a GPU, however having one will speed up the process.
 
 ## Notes
 
-For more details/questions please visit the [project page](https://www.adrianbulat.com) or send an email at adrian.bulat@nottigham.ac.uk
+For more details/questions please visit the [project page](https://www.adrianbulat.com) or send an email at adrian.bulat@nottingham.ac.uk
 
 Warning: The script will download by default both the models and the dataset(~15Gb), if you wan't to avoid this or you already have them downloaded please move them in the corresponding folders 
 in datasets/[datasetname]_dataset/. Running the demo for lsp dataset will require only ~700Mb of space.
