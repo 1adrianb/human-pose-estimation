@@ -15,8 +15,9 @@ function getTransform(center, scale, res)
     return t
 end
 
--- Transform the coordinates between to the image space
+-- Transform the coordinates from the original image space to the cropped one
 function transform(pt, center, scale, res, invert)
+    -- Define the transformation matrix
     local pt_new = torch.ones(3)
     pt_new[1], pt_new[2] = pt[1], pt[2]
     local t = getTransform(center, scale, res)
@@ -64,8 +65,8 @@ function getPreds(heatmaps, center, scale)
 
     -- Get the coordinates in the original space
     local preds_orig = torch.zeros(preds:size())
-    for i = 1,heatmaps:size(1) do        -- Number of samples
-        for j = 1,heatmaps:size(2) do    -- Number of output heatmaps for one sample
+    for i = 1,heatmaps:size(1) do        
+        for j = 1,heatmaps:size(2) do
             preds_orig[i][j] = transform(preds[i][j],center,scale,heatmaps:size(3),true)
         end
     end
