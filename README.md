@@ -9,6 +9,7 @@ This repository implements a demo of the Human pose estimation via Convolutional
 ### Torch packages
 - [nn](https://github.com/torch/nn)
 - [cunn](https://github.com/torch/cunn) or [cudnn](https://github.com/soumith/cudnn.torch) (preffered) if you have a CUDA enabled GPU
+- [optnet](https://github.com/fmassa/optimize-net)
 - [xlua](https://github.com/torch/xlua)
 - [image](https://github.com/torch/image)
 - [sh](https://github.com/zserge/luash)
