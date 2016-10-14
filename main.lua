@@ -5,12 +5,14 @@ require 'image'
 local py = require 'fb.python'
 
 require 'transform'
+optnet = require 'optnet'
 
 -- Load optional libraries
 xrequire('cunn')
 xrequire('cudnn')
 
 torch.setdefaulttensortype('torch.FloatTensor')
+opts_mem = {inplace=true, reuseBuffers=true, mode='inference'}
 
 local options = require 'options'
 local data = require 'data'
@@ -35,6 +37,12 @@ if opts.useGPU then
     cudnn.convert(model, cudnn)
   end
   model = model:cuda()
+end
+
+if opts.useGPU then
+	optnet.optimizeMemory(model, torch.zeros(1,3,opts.res,opts.res):cuda(), opt_mem)
+else
+	optnet.optimizeMemory(model, torch.zeros(1,3,opts.res,opts.res), opt_mem)
 end
 
 model:evaluate()
