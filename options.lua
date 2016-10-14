@@ -18,6 +18,11 @@ function C.parse(arg)
   
   assert(opt.dataset=='lsp' or opt.dataset=='mpii',"Only mpii and lsp are valid options")
   
+  if opt.useGPU<1 then
+        opt.useGPU = false
+  else
+        opt.useGPU = true
+  end
   return opt
 end
 
