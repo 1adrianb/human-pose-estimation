@@ -10,6 +10,8 @@ require 'transform'
 xrequire('cunn')
 xrequire('cudnn')
 
+torch.setdefaulttensortype('torch.FloatTensor')
+
 local options = require 'options'
 local data = require 'data'
 
@@ -101,7 +103,12 @@ for i=1,n do
   local output = model:forward(input:view(1,3,opts.res,opts.res))
   
   output = applyFn(function (x) return x:clone() end, output)
-  local flippedOut = model:forward(flip(input:view(1,3,opts.res,opts.res):cuda()))
+  local flippedOut = nil
+  if opts.useGPU then
+        flippedOut = model:forward(flip(input:view(1,3,opts.res,opts.res):cuda()))
+  else
+        flippedOut = model:forward(flip(input:view(1,3,opts.res,opts.res)))
+  end
   flippedOut = applyFn(function (x) return flip(shuffleLR(x)) end, flippedOut)
   output = applyFn(function (x,y) return x:add(y):div(2) end, output, flippedOut):float()
 	
