@@ -40,9 +40,9 @@ if opts.useGPU then
 end
 
 if opts.useGPU then
-	optnet.optimizeMemory(model, torch.zeros(1,3,opts.res,opts.res):cuda(), opt_mem)
+	optnet.optimizeMemory(model, torch.zeros(1,3,opts.res,opts.res):cuda(), opts_mem)
 else
-	optnet.optimizeMemory(model, torch.zeros(1,3,opts.res,opts.res), opt_mem)
+	optnet.optimizeMemory(model, torch.zeros(1,3,opts.res,opts.res), opts_mem)
 end
 
 model:evaluate()
