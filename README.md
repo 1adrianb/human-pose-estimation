@@ -2,7 +2,7 @@
 
 This repository implements a demo of the Human pose estimation via Convolutional Part Heatmap Regression paper [Bulat](https://www.adrianbulat.com)&[Tzimiropoulos](http://www.cs.nott.ac.uk/~pszyt/).
 
-**Note: New code capable of running on devices with limited resources, for Human Pose Estimation and Face Alignment was released. For a demo please check: [https://github.com/1adrianb/binary-human-pose-estimation](https://github.com/1adrianb/binary-human-pose-estimation) **
+Note: New code capable of running on devices with limited resources, for Human Pose Estimation and Face Alignment was released. For a demo please check: [https://github.com/1adrianb/binary-human-pose-estimation](https://github.com/1adrianb/binary-human-pose-estimation) 
 
 ## Requirement
 - Install the latest [Torch](http://torch.ch/docs/getting-started.html) version
