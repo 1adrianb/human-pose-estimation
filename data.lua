@@ -36,7 +36,7 @@ function C.checkIntegrity(opts)
 	  if not paths.filep(paths.concat('dataset','lsp_dataset.zip')) and not 
       paths.dirp(paths.concat('dataset/lsp_dataset')) then
 		  print('Downloading the LSP dataset...')
-		  C.get('http://www.comp.leeds.ac.uk/mat4saj/lsp_dataset.zip','dataset')
+		  C.get('http://sam.johnson.io/research/lsp_dataset.zip','dataset')
 		  C.get('https://adrianbulat.com/downloads/ECCV16/lsp_dataset.t7','dataset')
 		  print('Decompressing dataset...')
 		  local cmd = sh.command('unzip')
