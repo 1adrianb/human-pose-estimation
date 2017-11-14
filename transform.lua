@@ -124,28 +124,28 @@ function calculateMetrics(dists,opts)
 		print(partNames[i]..': ',(sums[partsC[i][1]]/count[partsC[i][1]]+sums[partsC[i][2]]/count[partsC[i][1]])*100/2)
 	end
   
-  py.exec([=[
-import numpy as np
-import matplotlib.pyplot as plt
-partsC = partsC - 1
-pairs = np.array([[1,2], [2,3], [3,7], [4,5], [4,7], [5,6], [7,9], [9,10], [14,9], [11,12], [12,13], [13,9], [14,15], [15,16]])-1
-var = np.arange(0,threshold+.01,0.01)
-print dists.shape
-    
-f, axarr = plt.subplots(3, 2, sharex='col', sharey='row')
-
-index = 0
-
-for el in axarr.ravel():
-  el.axis([0, threshold, 0, 1])
-  el.set_title(partNames[index])
-  cum_err = np.zeros(var.shape[0])
-  for j in range(var.shape[0]):
-    cum_err[j] = (dists[[partsC[index,0],partsC[index,1]],...]<var[j]).sum().astype('float')/(count[partsC[index,0]]+count[partsC[index,1]])
-  el.plot(var,cum_err)
-  index = index + 1
-plt.show()
-]=],{partNames = partNames, partsC = partsC, dists = pdists, count=count, threshold = threshold})
+--py.exec([=[
+--import numpy as np
+--import matplotlib.pyplot as plt
+--partsC = partsC - 1
+--pairs = np.array([[1,2], [2,3], [3,7], [4,5], [4,7], [5,6], [7,9], [9,10], [14,9], [11,12], [12,13], [13,9], [14,15], [15,16]]) - 1
+--var = np.arange(0,threshold+.01,0.01)
+--print dists.shape
+--    
+--f, axarr = plt.subplots(3, 2, sharex='col', sharey='row')
+--
+--index = 0
+--
+--for el in axarr.ravel():
+--  el.axis([0, threshold, 0, 1])
+--  el.set_title(partNames[index])
+--  cum_err = np.zeros(var.shape[0])
+--  for j in range(var.shape[0]):
+--    cum_err[j] = (dists[[partsC[index,0],partsC[index,1]],...]<var[j]).sum().astype('float')/(count[partsC[index,0]]+count[partsC[index,1]])
+--  el.plot(var,cum_err)
+--  index = index + 1
+--plt.show()
+--]=],{partNames = partNames, partsC = partsC, dists = pdists, count=count, threshold = threshold})
 end
 
 -- Helper function for applying an operation whether passed a table or tensor
